@@ -1,0 +1,95 @@
+.nav-bar{
+    width: 94%;
+    height: 75px;
+    border-radius: $border;
+    background-color: $pc;
+    position: fixed;
+    bottom: 20px;
+    left: 3%;
+    @include flex(space-around,center);
+    z-index: 5;
+    .logo, .loginIcon{
+        display: none;
+    }
+    .main-nav{
+        width: 90%;
+        margin: 0 auto;
+        @include flex(space-between,center);
+        a{
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .nav-add{
+            img{
+                width: 45px;
+            }
+        }
+        .active{
+            background-color: $sc;
+            img{
+                mix-blend-mode: exclusion;
+            }
+        }
+    }
+}
+
+
+/*--desktop--*/
+
+@media (min-width : 1024px){
+    .nav-bar{
+        width: $bar;
+        height: 100vh;
+        background-color: $pc;
+        border-radius: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        @include flex(space-around,center);
+        flex-direction: column;
+        .logo{
+            display: block;
+            width: 80px;
+            height: 80px;
+            background-color: $sc; 
+            border-radius: 20px;
+            border: 4px solid $pc;
+            @include flex(center,center);
+            img{
+                width: 55px;
+            }
+        }
+        .loginIcon{
+            display: inline;
+            height: 30px;
+        }
+        .main-nav{
+            width: 100%;
+            height: 50%;
+            @include flex(space-around,center);
+            flex-direction: column;
+            img{
+                mix-blend-mode:normal;
+            }
+            .nav-add{
+                img{
+                    width: 30px;
+                }
+            }
+            .active{
+                width: calc(100px + 25px);
+                height: 60px;
+                margin-left: 50%;
+                background-color: $sc;
+                border-radius: 15px;
+                border:none;
+                display: flex;
+                align-items: center;
+                img{
+                    mix-blend-mode: exclusion;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,233 @@
+.add{
+    form{
+        width: 100%;
+        height: 100%;
+        @include flex(space-between, center);
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+        .amount,.notion,.date{
+           width: 100%
+        }
+        .typesForm{
+            width:100%;
+            height: 60px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 30px;
+            align-self: flex-end;
+            .radio{
+                background-color: $sc;
+                width: 100%;
+                height: 60px;
+                border: 4px solid $pc;
+                border-radius: 15px;
+                input{
+                    display: none;
+                }
+                label{
+                    height: 100%;
+                    text-align: center;
+                    line-height: 50px;
+                    margin: 0;
+                    display: block;
+                    cursor: pointer;
+                    transition: color .5s, background-color .5s;
+                }input:checked  + label{
+                    background-color: $pc;
+                    color: $sc;     
+                } 
+            }
+        }
+        .categoriesForm{
+            width: 100%;
+            display: grid;
+            grid-gap: 30px;
+            margin-bottom: 30px;
+            &.categoriesIn{
+                display: none;
+                grid-template-columns: repeat(1, 1fr);
+                transition: opacity .5s;
+            }
+            &.categoriesOut{
+                display: none;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .radio{
+                background-color: $sc;
+                width: 100%;
+                height: 60px;
+                border: 4px solid $pc;
+                border-radius: 15px;
+                input{
+                    display: none;
+                }
+                label{
+                    font-size: 1.1em;
+                    height: 100%;
+                    text-align: center;
+                    line-height: 50px;
+                    margin: 0;
+                    display: block;
+                    cursor: pointer;
+                    transition: color .5s, background-color .5s;
+                }
+                input:checked  + label{
+                    background-color: $pc;
+                    color: $sc;     
+                } 
+                &.transportation{
+                    border-color:$transportation;
+                    label{
+                        color:$transportation;
+                    }
+                    input:checked  + label{
+                        background-color: $transportation;
+                        color: $pc;     
+                    } 
+                }
+                &.bills{
+                    border-color:$bills;
+                    label{
+                        color:$bills;
+                    }
+                    input:checked  + label{
+                        background-color: $bills;
+                        color: $pc;     
+                    } 
+                }
+                &.entertaiment{
+                    border-color:$entertaiment;
+                    label{
+                        color:$entertaiment;
+                    }
+                    input:checked  + label{
+                        background-color: $entertaiment;
+                        color: $pc;     
+                    } 
+                }
+                &.health{
+                    border-color:$health;
+                    label{
+                        color:$health;
+                    }
+                    input:checked  + label{
+                        background-color: $health;
+                        color: $pc;     
+                    } 
+                }
+                &.clothes{
+                    border-color:$clothes;
+                    label{
+                        color:$clothes;
+                    }
+                    input:checked  + label{
+                        background-color: $clothes;
+                        color: $pc;     
+                    } 
+                }
+                &.groceries{
+                    border-color:$groceries;
+                    label{
+                        color:$groceries;
+                    }
+                    input:checked  + label{
+                        background-color: $groceries;
+                        color: $pc;     
+                    } 
+                }
+                &.pets{
+                    border-color:$pets;
+                    label{
+                        color:$pets;
+                    }
+                    input:checked  + label{
+                        background-color: $pets;
+                        color: $pc;     
+                    } 
+                }
+                &.other{
+                    border-color:$other;
+                    label{
+                        color:$other;
+                    }
+                    input:checked  + label{
+                        background-color: $other;
+                        color: $pc;     
+                    } 
+                }
+            }
+        }
+    }
+}
+
+
+/*--tablet--*/
+
+@media (min-width : 768px){
+  
+} 
+/*--desktop--*/
+  
+@media (min-width : 1024px){
+    .add{
+        margin-bottom: 60px;
+        form{
+            .categoriesForm{
+                width: 100%;
+                display: grid;
+                grid-gap: 30px;
+                margin-bottom: 60px;
+                &.categoriesIn{
+                    display: none;
+                    grid-template-columns: repeat(3, 1fr);
+                    transition: opacity .5s;
+                }
+                &.categoriesOut{
+                    display: none;
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}
+  
+  
+/*--large-desktop--*/
+  
+@media (min-width : 1440px){
+    .add{
+        margin-bottom: 60px;
+        form{
+            @include flex(space-between, center);
+            flex-wrap: wrap;
+            margin-bottom: 0;
+            .amount,.notion,.date{
+               width: calc(50% - 30px);
+            }
+            .typesForm{
+                width: calc(50% - 30px);
+                height: 60px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-column-gap: 30px;
+                align-self: flex-end;
+
+            }
+            .categoriesForm{
+                width: 100%;
+                display: grid;
+                grid-gap: 30px;
+                margin-bottom: 60px;
+                &.categoriesIn{
+                    display: none;
+                    grid-template-columns: repeat(3, 1fr);
+                    transition: opacity .5s;
+                }
+                &.categoriesOut{
+                    display: none;
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}

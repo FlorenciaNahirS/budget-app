@@ -1,0 +1,420 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    color: $pc;
+}
+
+body{
+  background-color: $pc;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+input::placeholder {
+  color: rgba($pc, .4);
+}
+
+main{
+  width: 100%;
+  height: 100%;
+  background-color: $sc;
+  border-radius: $border;
+  padding:10px;
+  padding-bottom: 80px;  
+  .main-header{
+      .logoMobile,.loginMobile{
+          display: none;
+      }
+      margin: 20px 0;
+      h2{
+          font-size: 2.4em;
+      }
+  }
+}
+
+.icon{
+    width: 30px;
+}
+
+.subtitle{
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.container{
+    background-color: $pc;
+    padding: 10px; 
+    position: relative;
+}
+
+.btn-add{
+  display: none;
+}
+
+.btn{
+    width: 100%;
+    margin: 20px 0 30px;
+    font-size: 1.1em;
+    padding: 6px 16px;
+    background-color: $pc;
+    color: $sc;
+    border-radius: 15px;
+    border: 4px solid $pc;
+    cursor: pointer;
+    transition: color .5s, background-color .5s;
+    display: inline-block;
+    &:hover{
+        background-color: $sc;
+        color: $pc;
+    }
+}
+
+.transactions{
+    width: 100%;
+    grid-area:'transactions';
+    .transaction{
+      width: 100%;
+      height: 90px;
+      margin: 15px 0;
+      padding: 0 15px;
+      border-radius: 20px;
+      border: 4px solid $pc;
+      @include flex(space-between,center);
+      .text{
+        div{ @include flex(space-between,center);
+        }
+        .notion{
+          width: 100px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        p{
+          font-size: .9em;
+          display: inline-block;
+        }
+      }
+      h2{
+          margin-bottom: 4px;
+          padding: 3px;
+      }
+      h3{
+          font-size: 1.6em;
+      }
+      strong{
+          margin-left: 7px;
+      }
+      &.in{
+          h3{
+              color: $green;
+          }
+      }
+      &.out{
+          h3{
+              color: $red;
+          }
+      }
+      &.transportation{
+              border-color:$transportation;
+              h2, strong{
+                  color:$transportation;
+              }
+      }
+      &.bills{
+              border-color:$bills;
+              h2, strong{
+                  color:$bills;
+              }
+      }
+      &.entertaiment{
+              border-color:$entertaiment;
+              h2, strong{
+                  color:$entertaiment;
+              }
+      }
+      &.health{
+              border-color:$health;
+              h2, strong{
+                  color:$health;
+              }
+      }
+      &.clothes{
+              border-color:$clothes;
+              h2, strong{
+                  color:$clothes;
+              }
+      }
+      &.groceries{
+              border-color:$groceries;
+              h2, strong{
+                  color:$groceries;
+              }
+      }
+      &.pets{
+              border-color:$pets;
+              h2, strong{
+                  color:$pets;
+              }
+      }
+      &.other{
+              border-color:$other;
+              h2, strong{
+                  color:$other;
+              }
+      }          
+    }            
+}
+
+
+.custom-select {
+    width: 100%;
+    position: relative;
+    font-family: Arial;
+    display: inline-block;
+    margin: 0 auto 20px;
+    &:first-child{
+        margin-left: 0;
+    }
+    label{
+        font-size: 1.3em;
+        margin-bottom: 0 0 0 3px;
+    }
+  }
+  
+  .custom-select select {
+    display: none; 
+  }
+  
+  .select-selected {
+    border: 4px solid $pc !important;
+    border-radius: 15px;
+    position: relative;
+    transition: color .5s, background-color .5s;
+    margin-top: 5px;
+  }
+
+  .click{
+    background-color: $pc;
+    color: $sc !important;
+    border-radius: 15px 15px 0 0;
+    border-bottom: none  !important;
+}
+  
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: $pc transparent transparent transparent;
+    transition: all .5s;
+  }
+  
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent $sc transparent;
+    top: 7px;
+    transition: all .5s;
+  }
+  
+  
+
+  .select-items div,.select-selected {
+    color: $pc;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    
+  }
+  
+  .select-items {
+    position: absolute;
+    background-color: $sc;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 4px solid $pc;
+    border-top: none;
+    border-radius: 0 0  15px 15px;
+  }
+
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+.input{
+    width: 100%;
+    margin: 0 0 30px;
+    input{
+        width: 100%;
+        height: 60px;
+        border: 4px solid $pc;
+        border-radius: 15px;
+        padding: 6px 12px;
+        font-size: 1.1em;
+    }
+    label{
+        font-size: 1.2em;
+        margin-bottom: 8px;
+        display: block;
+    }
+}
+
+.button{
+  width: 100%;
+  height: 60px;
+  border: 4px solid $pc;
+  background-color: $pc;
+  color: $sc;
+  border-radius: 15px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: color .5s, background-color .5s;
+  &:hover{
+      background-color: $sc;
+      color: $pc;   
+  }
+}
+
+/*--tablet--*/
+
+@media (min-width : 768px){
+
+}
+/*--desktop--*/
+
+@media (min-width : 1024px){
+  .container{
+    padding: 20px 20px 20px $bar; 
+  }
+
+  .btn{
+    width: 200px;
+  }
+
+  .btn-add{
+    width: 80px;
+    height: 80px;
+    display: block;
+    position: fixed;
+    right: 80px;
+    bottom: 60px;
+    background-color: $pc;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow:   2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07)
+  ;
+  }
+
+  main{
+    padding:90px 30px 30px;
+    .main-header{
+      .logoMobile,.loginMobile{
+          display: none;
+      }
+    }
+  }
+
+  .custom-select {
+    width: 250px;
+    margin: 0 30px 30px;
+  }
+
+  .input{
+    margin: 0 0 60px;
+  }
+
+  .button{
+    width: 240px;
+  }
+}
+
+
+
+/*--large-desktop--*/
+
+@media (min-width : 1440px){
+  .container{
+      padding: 40px 40px 40px $bar;
+  }
+
+  .btn{
+    width: 200px;
+    margin: 0 30px;
+  }
+
+  .btn-add{
+    width: 80px;
+    height: 80px;
+    display: block;
+    position: fixed;
+    right: 80px;
+    bottom: 60px;
+    background-color: $pc;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow:   2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07)
+  ;
+  }
+
+  .transactions{
+    width: 100%;
+    grid-area:'transactions';
+    .transaction{
+        width: 100%;
+        height: 90px;
+        margin: 15px 0;
+        h2{
+            margin-bottom: 4px;
+            padding: 3px;
+        }
+        h3{
+            font-size: 2.2em;
+        }
+        strong{
+            margin-left: 7px;
+        }          
+    }
+  }
+
+  main{
+    padding:110px 50px 50px;
+  padding-bottom: 50px; 
+  }
+
+  .custom-select {
+    width: 250px;
+    margin: 0 30px 30px;
+  }
+
+  .button{
+    width: 240px;
+  }
+}

@@ -1,0 +1,107 @@
+.records{
+    .transactions{
+        width: 100%;
+        .transaction{
+            .actions{
+                margin-left: 20px;
+                a{
+                    width: 35px;
+                    height: 35px;
+                    padding: 5px;
+                    border-radius: 6px;
+                    display: block;
+                    margin-bottom: 5px;
+                    background-color: #999999;
+                    transition: background-color .5s;
+                    @include flex(center,center);
+                    &:hover{
+                        background-color: $pc;
+                    }
+                }
+                form{
+                    button{
+                        width: 35px;
+                        height: 35px;
+                        padding: 5px;
+                        border-radius: 6px;
+                        background-color: $red;
+                        border:none;
+                        cursor: pointer;
+                        transition: background-color .5s;
+                        @include flex(center,center);
+                        &:hover{
+                            background-color: $pc;
+                        }
+                    }
+                }
+            }
+            .text{
+                margin-right: auto;
+                p{
+                    display: none;
+                }
+            }
+        }            
+    }
+}
+
+
+/*--tablet--*/
+
+@media (min-width : 768px){
+  
+} 
+/*--desktop--*/
+  
+@media (min-width : 1024px){
+    .records{
+        margin-bottom: 60px;
+        .transaction{
+            .actions{
+                margin-left: 30px;
+                a{
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom: 10px;
+                }
+                form{
+                    button{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .text{
+                margin-right: auto;
+            }
+        }      
+    }
+}
+  
+  
+/*--large-desktop--*/
+  
+@media (min-width : 1440px){
+    .records{
+        margin-bottom: 60px;
+        .transaction{
+            .actions{
+                margin-left: 30px;
+                a{
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom: 10px;
+                }
+                form{
+                    button{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .text{
+                margin-right: auto;
+            }
+        } 
+    }
+}

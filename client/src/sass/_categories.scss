@@ -1,0 +1,72 @@
+.btn-back{
+    .btn{
+        margin: 0 0 15px;
+        text-align: center;
+    }
+}
+.categoriesContainer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    .category{
+        width: 100%;
+        height: 100px;
+        border-radius:$border;
+        margin-bottom: 15px;
+        @include flex(center,center);
+        h2{
+            color: $pc;
+        }
+        &.transportation{
+            @include categories($transportation);
+        }
+        &.bills{
+            @include categories($bills);
+        }
+        &.entertaiment{
+            @include categories($entertaiment);
+        }
+        &.health{
+            @include categories($health);
+        }
+        &.clothes{
+            @include categories($clothes);
+        }
+        &.groceries{
+            @include categories($groceries);
+        }
+        &.pets{
+            @include categories($pets);
+        }
+        &.other{
+            @include categories($other);
+        }
+        
+    }
+}
+
+
+/*--tablet--*/
+
+@media (min-width : 768px){
+  
+} 
+/*--desktop--*/
+  
+@media (min-width : 1024px){
+    .categoriesContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-row-gap: 30px;
+        grid-column-gap: 60px ;
+        margin-bottom: 50px;
+    }
+}
+  
+  
+/*--large-desktop--*/
+  
+@media (min-width : 1440px){
+   
+}

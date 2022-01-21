@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+$pc :#262626;
+$sc : #f5f5f5;
+$border : 30px;
+$bar : 140px;
+$red: #e34742;
+$green: #539139;
+
+$transportation : #95a3db;
+$bills: #C0A8E6 ;
+$entertaiment: #008481;
+$health:#91C3CE ;
+$clothes : #F36300;
+$groceries : #FCA175;
+$pets:#FAC670;
+$other:  #edd147;//#f0d967;
+
+@mixin flex($justify,$align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin categories($color) {
+    background-color: $color;
+    border: 4px solid transparent;
+    transition: border .5s, background-color .5s;
+    h2{
+        transition: color .5s;
+    }
+    &:hover{
+        background-color: $sc;
+        border: 4px solid $color; 
+        h2{
+            color: $color; 
+        }
+    }
+}
+
+
+@import './general';
+@import './nav-bar';
+@import './home';
+@import './records';
+@import './categories';
+@import './category';
+@import './add';
+@import './user';
+@import './form';

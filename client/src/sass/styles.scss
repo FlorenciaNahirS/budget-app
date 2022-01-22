@@ -3,17 +3,17 @@
 $pc :#262626;
 $sc : #f5f5f5;
 $border : 30px;
-$bar : 140px;
+$bar : 100px; //140px;
 $red: #e34742;
 $green: #539139;
 
-$transportation : #95a3db;
-$bills: #C0A8E6 ;
+$bills : #95a3db;
+$clothes: #C0A8E6 ;
 $entertaiment: #008481;
-$health:#91C3CE ;
-$clothes : #F36300;
-$groceries : #FCA175;
-$pets:#FAC670;
+$groceries:#91C3CE ;
+$health : #F36300;
+$pets : #FCA175;
+$transportation:#FAC670;
 $other:  #edd147;//#f0d967;
 
 @mixin flex($justify,$align) {

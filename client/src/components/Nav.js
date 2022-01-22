@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 import logo from '../assets/piggy-bank.png';
 import homeIcon from '../assets/home.png';
 import recordsIcon from '../assets/records.png';
@@ -10,12 +12,12 @@ import '../sass/styles.scss'
 function Nav() {
     return (
         <aside className="nav-bar">
-            <a href="#" className="logo"><img src={logo} alt="Piggy banck icon"/></a>
+            { /*<Link to="/" className="logo"><img src={logo} alt="Piggy banck icon"/></Link> */ }
             <nav className="main-nav">
-                <a href="index.html" className="active"><img src={homeIcon} alt="Home icon" className="icon"/></a>
-                <a href="record.html"><img src={recordsIcon} alt="Recods icon" className="icon"/></a>
-                <a href="add.html" ><img src={addIcon} alt="Add icon" className="icon"/></a>
-                <a href="categories.html"><img src={categoriesIcon} alt="All categories icon" className="icon"/></a>
+                <Link to="/" className="active"><img src={homeIcon} alt="Home icon" className="icon"/></Link>
+                <Link to="/records"><img src={recordsIcon} alt="Recods icon" className="icon"/></Link>
+                <Link to="/add" ><img src={addIcon} alt="Add icon" className="icon"/></Link>
+                <Link to="/categories"><img src={categoriesIcon} alt="All categories icon" className="icon"/></Link>
             </nav>
         </aside>
     )

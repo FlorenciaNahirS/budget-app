@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', transactionRoutes);
+app.use('/api/transactions', transactionRoutes);
 app.use('/api/filter', categoriesController);
 
 // catch 404 and forward to error handler

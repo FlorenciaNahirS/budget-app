@@ -20,6 +20,8 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
+    "react-dayjs": "^0.3.2",
+    "react-router-dom": "^6.2.1",
     "sass": "^1.49.0",
     "sequelize": "^6.13.0",
     "sequelize-cli": "^6.4.1"

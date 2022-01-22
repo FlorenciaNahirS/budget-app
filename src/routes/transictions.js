@@ -6,7 +6,7 @@ const {total,latest,all,earnings,expenses,detail,create, update, destroy} = requ
 router
     .get('/total', total)
     .get('/latest', latest)
-    .get('/all', all)
+    .get('/all', all) 
     .get('/earnings', earnings)
     .get('/expenses', expenses)
     .get('/detail/:id', detail)

@@ -2,25 +2,7 @@
 
 const categories = [
   {
-    name : 'car',
-    typeId: 2,
-    createdAt : new Date,
-    updatedAt : null,
-  },
-  {
-    name : 'transportation',
-    typeId: 2,
-    createdAt : new Date,
-    updatedAt : null,
-  },
-  {
     name : 'bills',
-    typeId: 2,
-    createdAt : new Date,
-    updatedAt : null,
-  },
-  {
-    name : 'health',
     typeId: 2,
     createdAt : new Date,
     updatedAt : null,
@@ -32,7 +14,19 @@ const categories = [
     updatedAt : null,
   },
   {
+    name : 'entertaiment',
+    typeId: 2,
+    createdAt : new Date,
+    updatedAt : null,
+  },
+  {
     name : 'groceries',
+    typeId: 2,
+    createdAt : new Date,
+    updatedAt : null,
+  },
+  {
+    name : 'health',
     typeId: 2,
     createdAt : new Date,
     updatedAt : null,
@@ -44,7 +38,7 @@ const categories = [
     updatedAt : null,
   },
   {
-    name : 'entertaiment',
+    name : 'transportation',
     typeId: 2,
     createdAt : new Date,
     updatedAt : null,
@@ -56,13 +50,13 @@ const categories = [
     updatedAt : null,
   },
   {
-    name : 'salary',
+    name : 'gift',
     typeId: 1,
     createdAt : new Date,
     updatedAt : null,
   },
   {
-    name : 'gift',
+    name : 'salary',
     typeId: 1,
     createdAt : new Date,
     updatedAt : null,

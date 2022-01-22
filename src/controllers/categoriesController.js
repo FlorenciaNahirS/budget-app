@@ -12,6 +12,29 @@ const throwError = (res, error) => {
 }
 
 module.exports = {
+    categories:  async (req, res) => {
+        try {
+            let categories = await db.Category.findAll({
+                include: [{ all: true }],
+                where : {
+                    typeId : 2
+                }
+            });
+
+            let response = {
+                meta: {
+                    status: 200,
+                    total: categories.length,
+                    url: 'api/filter/categories/'
+                },
+                data: categories
+            }
+
+            return res.status(200).json(response)
+        } catch (error) {
+            throwError(res, error);
+        }
+    },
     category : async (req,res) => {
         try {
             if (isNaN(req.params.id)) {

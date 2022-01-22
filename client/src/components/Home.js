@@ -1,121 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import DayJS from 'react-dayjs';
 import '../sass/styles.scss'
 
+
 function Home() {
-  return (
-    <main>
-    <header className="main-header">
-        <h2>Home</h2>
-      
-    </header>
-    <section className="home">
-        <article className="total">
-            <h1>Your Total :</h1>
-            <h2>$1234</h2>
-        </article>
-        <article className="transactions">
-            <h2 className="subtitle">Últimas transacciones:</h2>
-            <div className="transaction out entertaiment" id="traa">
-                <div className="text">
-                    <h2>Salidas</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div> 
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction out transportation">
-                <div className="text">
-                    <h2>Transpaorte</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction out entertaiment">
-                <div className="text">
-                    <h2>Salidas</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction in">
-                <div className="text">
-                    <h2>Sueldo</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>+ $1234</h3>
-            </div>
-            <div className="transaction out bills">
-                <div className="text">
-                    <h2>Facturas</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction out clothes">
-                <div className="text">
-                    <h2>Ropa</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction in">
-                <div className="text">
-                    <h2>Sueldo</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>+ $1234</h3>
-            </div>
-            <div className="transaction out bills">
-                <div className="text">
-                    <h2>Facturas</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>- $1234</h3>
-            </div>
-            <div className="transaction in">
-                <div className="text">
-                    <h2>Regalo</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>+ $1234</h3>
-            </div>
-            <div className="transaction in">
-                <div className="text">
-                    <h2>Transaccion</h2>
-                    <div><p className="notion">Lorem ipsum dolor sit</p> <p><strong> 17-01-2022</strong></p></div>
-                </div>
-                <h3>+ $1234</h3>
-            </div>
-        </article>
-        <article className="categories">
-            <h2 className="subtitle">Categorias:</h2>
-            <a href="category.html" className="category transportation">
-                <h2>Transporte/Auto</h2>
-            </a>
-            <a href="category.html" className="category bills">
-                <h2>Facturas</h2>
-            </a>
-            <a href="category.html" className="category entertaiment">
-                <h2>Salidas</h2>
-            </a>
-            <a href="category.html" className="category health">
-                <h2>Salud</h2>
-            </a>
-            <a href="category.html" className="category clothes" >
-                <h2>Ropa</h2>
-            </a>
-            <a href="category.html" className="category groceries">
-                <h2>Supermercado</h2>
-            </a>
-            <a href="category.html" className="category pets">
-                <h2>Mascotas</h2>
-            </a>
-            <a href="category.html" className="category other">
-                <h2>Otros</h2>
-            </a>
-        </article>
-    </section>
-</main>
-  )
+
+    const [transaction, setTransaction] = useState([]);
+    const [total, setTotal] = useState([]);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3030/api/transactions/latest')
+            .then(response => response.json())
+            .then(transactions => {
+                console.log(transactions.data)
+                setTransaction(transactions.data)
+            }).catch(e => console.log(e))
+    }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:3030/api/transactions/total')
+            .then(response => response.json())
+            .then(total => {
+                console.log(total.data)
+                setTotal(total.data)
+            }).catch(e => console.log(e))
+    }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:3030/api/filter/categories')
+            .then(response => response.json())
+            .then(category => {
+                console.log(category.data)
+                setCategories(category.data)
+            }).catch(e => console.log(e))
+    }, [])
+
+    return (
+        <main>
+            <header className="main-header">
+                <h2>Home</h2>
+            </header>
+            <section className="home">
+                <article className="total">
+                    <h1>Your Total :</h1>
+                    <h2>$ {total}</h2>
+                </article>
+                <article className="transactions">
+                    <h2 className="subtitle">Last transactions:</h2>
+                    {
+                    transaction.length > 0 && transaction.map((elem, i) => {
+                        return (
+                            <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
+                                <div className="text">
+                                    <h2>{elem.category.name}</h2>
+                                    <div><p className="notion">{elem.notion}</p><p><DayJS format="DD-MM-YYYY" element="strong">{elem.date}</DayJS></p></div>
+                                </div>
+                                <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
+                            </div>
+                        )
+                    })
+                    }
+                    {
+                        transaction.length === 0 &&  (
+                            <div className="transaction" >
+                                <div className="text">
+                                    <h2>No transactions yet</h2>
+                                </div>
+                            </div>
+                        )
+                    }
+                </article>
+                <article className="categories">
+                    <h2 className="subtitle">Categories:</h2>
+                    {categories.map((elem, i) => {
+                        return (
+                            <a href="category.html" className={"category "+elem.name} key={elem + i}>
+                                <h2>{elem.name}</h2>
+                            </a>
+                        )
+                    })}
+
+                </article>
+            </section>
+        </main>
+    )
 }
 
 export default Home;

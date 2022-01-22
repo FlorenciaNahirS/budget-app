@@ -186,8 +186,8 @@ module.exports = {
             let response = {
                 meta: {
                     status: 201,
-                    url: 'api/create',
-                    msg: 'New transaction successfully created'
+                    url: 'api/create', 
+                    msg: 'New transaction successfully created'  
                 },
                 data: transaction
             }

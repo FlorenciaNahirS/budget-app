@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom'
 import DayJS from 'react-dayjs';
 import '../sass/styles.scss'
 
@@ -75,9 +76,9 @@ function Home() {
                     <h2 className="subtitle">Categories:</h2>
                     {categories.map((elem, i) => {
                         return (
-                            <a href="category.html" className={"category "+elem.name} key={elem + i}>
+                            <Link to={"category/"+elem.id} className={"category "+elem.name} key={elem + i}>
                                 <h2>{elem.name}</h2>
-                            </a>
+                            </Link>
                         )
                     })}
 

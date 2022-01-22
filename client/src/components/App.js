@@ -7,6 +7,7 @@ import Categories from './Categories'
 import Records from './Records';
 import AddForm from './AddForm';
 import NotFound from './NotFound';
+import Category from './Category';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/records" element={ <Records /> } />
           <Route exact path="/add" element={ <AddForm /> } />
           <Route exact path="/categories" element={<Categories />} />
+          <Route exact path="/category/:id" element={ <Category /> } />
           <Route  path="*" element={ <NotFound /> } />	
         </Routes>   
 

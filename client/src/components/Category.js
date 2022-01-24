@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import DayJS from 'react-dayjs';
 
-import '../sass/styles.scss'
 
 function Category() {
 
@@ -15,16 +14,16 @@ function Category() {
         fetch('http://localhost:3030/api/filter/categories/' + id)
             .then(response => response.json())
             .then(transaction => {
-                console.log(transaction.data)
+                //console.log(transaction.data)
                 setTransactions(transaction.data)
             }).catch(e => console.log(e))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:3030/api/filter/categories')
+        fetch('http://localhost:3030/api/filter/categories/expences')
             .then(response => response.json())
             .then(category => {
-                console.log(category.data)
+                //console.log(category.data)
                 setCategories(category.data)
             }).catch(e => console.log(e))
     }, [])

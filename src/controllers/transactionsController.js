@@ -150,7 +150,6 @@ module.exports = {
             }
 
             let detail = await db.Transaction.findOne({
-                include: [{ all: true }],
                 where: {
                     id: req.params.id
                 }
@@ -178,7 +177,7 @@ module.exports = {
     },
     create: async (req, res) => {
         try {
-            req.body.date ? req.body.date = dyajs(req.body.date).format('DD-MM-YYYY') : req.body.date = new Date;
+            req.body.date ? req.body.date : req.body.date = new Date;
             let transaction = await db.Transaction.create({
                 ...req.body
             })
@@ -208,7 +207,7 @@ module.exports = {
                 throw error;
             }
 
-            req.body.date ? req.body.date = dyajs(req.body.date).format('DD-MM-YYYY') : req.body.date = new Date;
+            req.body.date ? req.body.date : req.body.date = new Date;
             let transaction = await db.Transaction.update(
                 {
                     ...req.body

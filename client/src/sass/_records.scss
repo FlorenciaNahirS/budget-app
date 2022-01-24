@@ -73,6 +73,9 @@
             }
             .text{
                 margin-right: auto;
+                p{
+                    display: flex;
+                }
             }
         }      
     }
@@ -101,6 +104,9 @@
             }
             .text{
                 margin-right: auto;
+                p{
+                    display: flex !important;
+                }
             }
         } 
     }

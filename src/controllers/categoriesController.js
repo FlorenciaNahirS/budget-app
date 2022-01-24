@@ -9,23 +9,18 @@ const throwError = (res, error) => {
         },
         data: error.message
     })
-}
+} 
 
 module.exports = {
     categories:  async (req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                include: [{ all: true }],
-                where : {
-                    typeId : 2
-                }
-            });
+            let categories = await db.Category.findAll();
 
             let response = {
                 meta: {
                     status: 200,
                     total: categories.length,
-                    url: 'api/filter/categories/'
+                    url: 'api/filter/categories'
                 },
                 data: categories
             }
@@ -83,11 +78,7 @@ module.exports = {
             }
 
             let type = await db.Transaction.findAll({
-                include: [{ all: true }],
-                order: [['id', 'DESC']],
-                where : {
-                    typeId : req.params.id
-                }
+                order: [['id', 'DESC']]
             });
 
             if (!type) {
@@ -116,9 +107,9 @@ module.exports = {
                 include: [{ all: true }],
                 order: [['id', 'DESC']],
                 where : {
-                    [req.query.type && req.query.category ? Op.and : Op.or]: [
-                        { typeId: req.query.type ? req.query.type : null }, 
-                        { categoryId: req.query.category ? req.query.category : null}
+                    [req.params.type && req.params.category ? Op.and : Op.or]: [
+                        { typeId: req.params.type ? req.params.type : null }, 
+                        { categoryId: req.params.category ? req.params.category : null}
                     ]
                 }
             });
@@ -126,7 +117,7 @@ module.exports = {
             let response = {
                 meta : { 
                     status: 200,
-                    url: 'api/filter/by'
+                    url: 'api/filter/by/'+req.params.type+'/'+req.params.category
                 },
                 data : filter
             }

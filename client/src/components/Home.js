@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import DayJS from 'react-dayjs';
-import '../sass/styles.scss'
 
 
 function Home() {
@@ -23,7 +22,7 @@ function Home() {
         fetch('http://localhost:3030/api/transactions/total')
             .then(response => response.json())
             .then(total => {
-                console.log(total.data)
+                //console.log(total.data)
                 setTotal(total.data)
             }).catch(e => console.log(e))
     }, [])
@@ -32,7 +31,7 @@ function Home() {
         fetch('http://localhost:3030/api/filter/categories')
             .then(response => response.json())
             .then(category => {
-                console.log(category.data)
+                //console.log(category.data)
                 setCategories(category.data)
             }).catch(e => console.log(e))
     }, [])
@@ -50,20 +49,20 @@ function Home() {
                 <article className="transactions">
                     <h2 className="subtitle">Last transactions:</h2>
                     {
-                    transaction.length > 0 && transaction.map((elem, i) => {
-                        return (
-                            <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
-                                <div className="text">
-                                    <h2>{elem.category.name}</h2>
-                                    <div><p className="notion">{elem.notion}</p><p><DayJS format="DD-MM-YYYY" element="strong">{elem.date}</DayJS></p></div>
+                        transaction.length > 0 && transaction.map((elem, i) => {
+                            return (
+                                <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
+                                    <div className="text">
+                                        <h2>{elem.category.name}</h2>
+                                        <div><p className="notion">{elem.notion}</p><p><DayJS format="DD-MM-YYYY" element="strong">{elem.date}</DayJS></p></div>
+                                    </div>
+                                    <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
                                 </div>
-                                <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
-                            </div>
-                        )
-                    })
+                            )
+                        })
                     }
                     {
-                        transaction.length === 0 &&  (
+                        transaction.length === 0 && (
                             <div className="transaction" >
                                 <div className="text">
                                     <h2>No transactions yet</h2>
@@ -74,13 +73,15 @@ function Home() {
                 </article>
                 <article className="categories">
                     <h2 className="subtitle">Categories:</h2>
-                    {categories.map((elem, i) => {
-                        return (
-                            <Link to={"category/"+elem.id} className={"category "+elem.name} key={elem + i}>
-                                <h2>{elem.name}</h2>
-                            </Link>
-                        )
-                    })}
+                    {
+                        categories.filter(elem => elem.typeId === 2).map((elem, i) => {
+                            return (
+                                <Link to={"category/" + elem.id} className={"category " + elem.name} key={elem + i}>
+                                    <h2>{elem.name}</h2>
+                                </Link>
+                            )
+                        })
+                    }
 
                 </article>
             </section>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 
-import '../sass/styles.scss'
 
 
 function Categories() {
@@ -12,7 +11,7 @@ function Categories() {
         fetch('http://localhost:3030/api/filter/categories')
             .then(response => response.json())
             .then(category => {
-                console.log(category.data)
+                //console.log(category.data)
                 setCategories(category.data)
             }).catch(e => console.log(e))
     }, [])
@@ -24,7 +23,7 @@ function Categories() {
             </header>
             <section className="categoriesContainer">
                 {
-                    categories.map((elem, i) => {
+                    categories.filter(elem => elem.typeId === 2).map((elem, i) => {
                         return (
                             <Link to={"/category/"+elem.id} className={"category " + elem.name} key={elem + i}>
                                 <h2>{elem.name}</h2>

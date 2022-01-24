@@ -7,7 +7,6 @@ import recordsIcon from '../assets/records.png';
 import addIcon from '../assets/add-w.png';
 import categoriesIcon from '../assets/categories.png';
 
-import '../sass/styles.scss'
 
 function Nav() {
     return (

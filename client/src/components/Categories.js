@@ -17,7 +17,7 @@ function Categories() {
     }, [])
 
     return (
-        <main>
+        <>
             <header className="main-header">
                 <h2>All Categories</h2>
             </header>
@@ -32,7 +32,7 @@ function Categories() {
                     })
                 }
             </section>
-        </main >
+        </ >
     )
 }
 

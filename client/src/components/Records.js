@@ -96,7 +96,7 @@ function Records() {
     }
 
     return (
-        <main>
+        <>
             <header className="main-header">
                 <h2>Transactions history</h2>
             </header>
@@ -167,7 +167,7 @@ function Records() {
                     }
                 </article>
             </section>
-        </main>
+        </>
     )
 }
 

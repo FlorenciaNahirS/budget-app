@@ -37,7 +37,7 @@ function Home() {
     }, [])
 
     return (
-        <main>
+        <>
             <header className="main-header">
                 <h2>Home</h2>
             </header>
@@ -85,7 +85,7 @@ function Home() {
 
                 </article>
             </section>
-        </main>
+        </>
     )
 }
 

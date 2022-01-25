@@ -81,11 +81,11 @@ function EditForm() {
     }
 
     return (
-        <main onLoad={show}> 
+        <> 
             <header className="main-header">
                 <h2>Edit transaction</h2>
             </header>
-            <section className="add">
+            <section className="add" onLoad={show}>
                 <form action='/' ref={form}>
                     <div className="input amount">
                         <label htmlFor='amount'>Amount</label>
@@ -139,7 +139,7 @@ function EditForm() {
                     <button type="submit" className="button" onClick={send}>Edit</button>
                 </form>
             </section>
-        </main>
+        </>
     )
 }
 

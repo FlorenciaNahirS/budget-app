@@ -70,7 +70,7 @@ function AddForm() {
     }
 
     return (
-        <main>
+        <>
             <header className="main-header">
                 <h2>Add transaction</h2>
             </header>
@@ -129,7 +129,7 @@ function AddForm() {
                     <button type="submit" className="button" onClick={send}>Add</button>
                 </form>
             </section>
-        </main>
+        </>
     )
 }
 

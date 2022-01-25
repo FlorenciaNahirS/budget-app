@@ -30,7 +30,7 @@ function Category() {
     let category = categories.filter(category => id == category.id).map(category => category.name);
 
     return (
-        <main>
+        <>
             <header className="main-header">
                 <h2>{'Category: '+category}</h2>
             </header>
@@ -63,7 +63,7 @@ function Category() {
                     }
                 </article>
             </section>
-        </main>
+        </>
     )
 }
 

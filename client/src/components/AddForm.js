@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import dayJs from 'dayjs';
 
 function AddForm() {
 
     let day = new Date();
-    let today = day.getFullYear() + '-' + ('0' + (day.getMonth() + 1)).slice(-2) + '-' + ('0' + day.getDate()).slice(-2);
+    let today = dayJs(day).format('YYYY-MM-DD');
 
     //Llama a las categorias
     const [categories, setCategories] = useState([]);
@@ -32,6 +33,8 @@ function AddForm() {
             }
         })
     }
+
+    console.log(formData)
 
     //Muestra y oculta las categorias
     let earningsCheck = useRef();
@@ -83,7 +86,7 @@ function AddForm() {
                     </div>
                     <div className="input date">
                         <label htmlFor='date'>Fecha</label>
-                        <input type="date" name="date" id="date" onChange={handleChange} value={formData.date} />
+                        <input type="date" name="date" id="date"  value={formData.date} onChange={handleChange}/>
                     </div>
                     <div className="typesForm input">
                         <div className="radio" id="typeIn" onClick={showCategoriesIn}>

@@ -76,20 +76,6 @@
                     width: 30px;
                 }
             }
-            .active{
-                width: calc(100px + 25px);
-                height: 60px;
-                margin-left: 50%;
-                background-color: $sc;
-                border-radius: 15px;
-                border:none;
-                display: flex;
-                align-items: center;
-                img{
-                    mix-blend-mode: exclusion;
-                    margin: 0 5px;
-                }
-            }
         }
     }
 }

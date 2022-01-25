@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import DayJS from 'react-dayjs';
-
+import dayJs from 'dayjs';
 
 function Home() {
 
@@ -13,11 +12,12 @@ function Home() {
         fetch('http://localhost:3030/api/transactions/latest')
             .then(response => response.json())
             .then(transactions => {
-                console.log(transactions.data)
+                //console.log(transactions.data)
                 setTransaction(transactions.data)
             }).catch(e => console.log(e))
     }, [])
 
+    
     useEffect(() => {
         fetch('http://localhost:3030/api/transactions/total')
             .then(response => response.json())
@@ -54,7 +54,7 @@ function Home() {
                                 <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
                                     <div className="text">
                                         <h2>{elem.category.name}</h2>
-                                        <div><p className="notion">{elem.notion}</p><p><DayJS format="DD-MM-YYYY" element="strong">{elem.date}</DayJS></p></div>
+                                        <div><p className="notion">{elem.notion}</p><p><strong>{dayJs(elem.date).format('DD-MM-YYYY')}</strong></p></div>
                                     </div>
                                     <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
                                 </div>

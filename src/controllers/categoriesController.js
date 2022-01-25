@@ -70,28 +70,12 @@ module.exports = {
     type : async (req,res) => {
         try {
 
-            if (isNaN(req.params.id)) {
-                let error = new Error('Wrong ID type');
-                error.status = 422;
-
-                throw error;
-            }
-
-            let type = await db.Transaction.findAll({
-                order: [['id', 'DESC']]
-            });
-
-            if (!type) {
-                let error = new Error('Nonexistent ID')
-                error.status = 404; 
-
-                throw error; 
-            }
+            let type = await db.Type.findAll();
 
             let response = {
                 meta : {
                     status: 200,
-                    url: 'api/filter/types/'+req.params.id
+                    url: 'api/filter/types/'
                 },
                 data : type
             }

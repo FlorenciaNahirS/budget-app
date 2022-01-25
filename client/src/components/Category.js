@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import DayJS from 'react-dayjs';
-
+import dayJs from 'dayjs';
 
 function Category() {
 
@@ -20,7 +19,7 @@ function Category() {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:3030/api/filter/categories/expences')
+        fetch('http://localhost:3030/api/filter/categories')
             .then(response => response.json())
             .then(category => {
                 //console.log(category.data)
@@ -46,7 +45,7 @@ function Category() {
                                 <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
                                     <div className="text">
                                         <h2>{elem.category.name}</h2>
-                                        <div><p className="notion">{elem.notion}</p><p><DayJS format="DD-MM-YYYY" element="strong">{elem.date}</DayJS></p></div>
+                                        <div><p className="notion">{elem.notion}</p><p><strong>{dayJs(elem.date).format('DD-MM-YYYY')}</strong></p></div>
                                     </div>
                                     <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
                                 </div>

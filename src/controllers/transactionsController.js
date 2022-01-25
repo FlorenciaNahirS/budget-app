@@ -177,7 +177,6 @@ module.exports = {
     },
     create: async (req, res) => {
         try {
-            req.body.date ? req.body.date : req.body.date = new Date;
             let transaction = await db.Transaction.create({
                 ...req.body
             })

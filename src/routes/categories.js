@@ -5,8 +5,8 @@ const {categories,category,type, filter} = require('../controllers/categoriesCon
 /* /api/filter/ */
 router
     .get('/categories', categories)
+    .get('/types', type)
     .get('/by/:type/:category', filter)
     .get('/categories/:id', category)
-    .get('/types/:id', type)
-
+    
 module.exports = router;

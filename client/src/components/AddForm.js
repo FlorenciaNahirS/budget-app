@@ -21,7 +21,7 @@ function AddForm() {
 
     //Guarda infomacion en formData
     const [formData, setFormData] = useState(
-        { amount: "", notion: "", date: today, typeId: "", categoryId: "" }
+        { amount: "", concept: "", date: today, typeId: "", categoryId: "" }
     )
 
 
@@ -72,20 +72,20 @@ function AddForm() {
     return (
         <main>
             <header className="main-header">
-                <h2>Add transactions</h2>
+                <h2>Add transaction</h2>
             </header>
             <section className="add">
                 <form action='/' ref={form}>
                     <div className="input amount">
-                        <label htmlFor='amount'>Monto</label>
+                        <label htmlFor='amount'>Amount</label>
                         <input type="number" name="amount" id="amount" placeholder="1234" onChange={handleChange} />
                     </div>
-                    <div className="input notion">
-                        <label htmlFor='notion'>Nota</label>
-                        <input type="text" name="notion" id="notion" placeholder="A nice jacket" onChange={handleChange} />
+                    <div className="input concept">
+                        <label htmlFor='concept'>Concept</label>
+                        <input type="text" name="concept" id="concept" placeholder="A nice jacket" onChange={handleChange} />
                     </div>
                     <div className="input date">
-                        <label htmlFor='date'>Fecha</label>
+                        <label htmlFor='date'>Date</label>
                         <input type="date" name="date" id="date"  value={formData.date} onChange={handleChange}/>
                     </div>
                     <div className="typesForm input">

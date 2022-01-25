@@ -143,7 +143,7 @@ function Records() {
                                 <div className={"transaction " + elem.category.name + " " + elem.types.name} key={elem + i}>
                                     <div className="text">
                                         <h2>{elem.category.name}</h2>
-                                        <div><p className="notion">{elem.notion}</p><p><strong>{dayJs(elem.date).format('DD-MM-YYYY')}</strong></p></div>
+                                        <div><p className="concept">{elem.concept}</p><p><strong>{dayJs(elem.date).format('DD-MM-YYYY')}</strong></p></div>
                                     </div>
                                     <h3>{elem.typeId === 2 ? '- $' + elem.amount : '+ $' + elem.amount}</h3>
                                     <div className="actions" >

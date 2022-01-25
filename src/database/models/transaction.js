@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Transaction.init({
     amount: DataTypes.INTEGER,
-    notion: DataTypes.STRING,
+    concept: DataTypes.STRING,
     date: DataTypes.DATE,
     typeId: DataTypes.INTEGER,
     categoryId: DataTypes.INTEGER

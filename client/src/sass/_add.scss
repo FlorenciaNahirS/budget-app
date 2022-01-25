@@ -5,7 +5,7 @@
         @include flex(space-between, center);
         flex-wrap: wrap;
         margin-bottom: 15px;
-        .amount,.notion,.date{
+        .amount,.concept,.date{
            width: 100%
         }
         .typesForm{
@@ -202,7 +202,7 @@
             @include flex(space-between, center);
             flex-wrap: wrap;
             margin-bottom: 0;
-            .amount,.notion,.date{
+            .amount,.concept,.date{
                width: calc(50% - 30px);
             }
             .typesForm{

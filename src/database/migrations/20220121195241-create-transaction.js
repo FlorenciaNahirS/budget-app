@@ -11,7 +11,7 @@ module.exports = {
       amount: {
         type: Sequelize.INTEGER
       },
-      notion: {
+      concept: {
         type: Sequelize.STRING
       },
       date: {

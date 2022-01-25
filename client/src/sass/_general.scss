@@ -113,7 +113,7 @@ main{
       .text{
         div{ @include flex(space-between,center);
         }
-        .notion{
+        .concept{
           width: 100px;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -271,7 +271,7 @@ main{
         p:last-child{
           width: 40%;
         }
-        .notion{
+        .concept{
             width: 90%;
             text-transform: initial;
         }

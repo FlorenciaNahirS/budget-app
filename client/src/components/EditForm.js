@@ -5,30 +5,20 @@ import dayJs from 'dayjs';
 
 function EditForm() {
 
-    //Llama a la transaccion actual
     let { id } = useParams();
 
-    const [transactions, setTransactions] = useState([]);
+    const [formData, setFormData] = useState(
+        {amount: '', concept: '', data: '', typeId: '', categoryId: ''}
+    )
 
     useEffect(() => {
         fetch('http://localhost:3030/api/transactions/detail/' + id)
             .then(response => response.json())
             .then(transaction => {
                 //console.log(transaction.data)
-                setTransactions(transaction.data)
+                setFormData(transaction.data)
             }).catch(e => console.log(e))
     }, [])
-
-    let {amount,notion,date,typeId,categoryId} = transactions;
-    let day = dayJs(date).format('YYYY-MM-DD');
-
-    //Guarda infomacion en formData
-    const [formData, setFormData] = useState( 
-        { amount , notion , date:day , typeId , categoryId  }
-    )
-
-    console.log(formData)
-    console.log(transactions)
 
     //Actualiza la infomacion en formData
     function handleChange(event) {
@@ -60,7 +50,7 @@ function EditForm() {
     let radio = useRef();
 
     function show(){
-        if(typeId == earningsCheck.current.value) {
+        if(formData.typeId == earningsCheck.current.value) {
             categoriesIn.current.style.display = 'grid';
             categoriesOut.current.style.display = 'none';
             categoriesIn.current.style.pointerEvents = 'none'
@@ -93,29 +83,29 @@ function EditForm() {
     return (
         <main onLoad={show}> 
             <header className="main-header">
-                <h2>Add transactions</h2>
+                <h2>Edit transaction</h2>
             </header>
             <section className="add">
                 <form action='/' ref={form}>
                     <div className="input amount">
-                        <label htmlFor='amount'>Monto</label>
-                        <input type="number" name="amount" id="amount" placeholder="1234" onChange={handleChange} value={formData.amount}/>
+                        <label htmlFor='amount'>Amount</label>
+                        <input type="number" name="amount" id="amount" placeholder="1234" onChange={handleChange}  value={formData.amount} />
                     </div>
-                    <div className="input notion">
-                        <label htmlFor='notion'>Nota</label>
-                        <input type="text" name="notion" id="notion" placeholder="A nice jacket" onChange={handleChange} value={formData.notion}/>
+                    <div className="input concept">
+                        <label htmlFor='concept'>Concept</label>
+                        <input type="text" name="concept" id="concept" placeholder="A nice jacket" onChange={handleChange} value={formData.concept}/>
                     </div>
                     <div className="input date">
-                        <label htmlFor='date'>Fecha</label>
-                        <input  type="date" name="date" id="date" onChange={handleChange} value={formData.date} data-date-format="DD-MM-YYYY"/>
+                        <label htmlFor='date'>Date</label>
+                        <input  type="date" name="date" id="date"  value={dayJs(formData.date).format('YYYY-MM-DD')}  onChange={handleChange}/>
                     </div>
                     <div className="typesForm input">
                         <div className="radio" id="typeIn" ref={radio}>
-                            <input type="radio" name="typeId" id="earnings" ref={earningsCheck} value="1" checked={typeId === 1} onChange={handleChange} disabled/>
-                            <label htmlFor='earnings'>Earnings</label>
+                            <input type="radio" name="typeId" id="earnings" ref={earningsCheck} value="1" checked={formData.typeId === 1} onChange={handleChange} disabled/>
+                            <label htmlFor='earnings' >Earnings</label>
                         </div>
                         <div className="radio" id="typeOut" ref={radio}>
-                            <input type="radio" name="typeId" ref={expencesCheck} id="expenses" value="2"  checked={typeId === 2} onChange={handleChange} disabled/>
+                            <input type="radio" name="typeId" ref={expencesCheck} id="expenses" value="2"  checked={formData.typeId === 2} onChange={handleChange} disabled/>
                             <label htmlFor='expenses'>Expenses</label>
                         </div>
                     </div>
@@ -123,9 +113,8 @@ function EditForm() {
                         {
                             categories.filter(elem => elem.typeId === 2).map((elem, i) => {
                                 return (
-
                                     <div className={"radio " + elem.name} key={elem + i}>
-                                        <input type="radio" name="categoryId" id={elem.name} checked={categoryId === elem.id} value={elem.id} onChange={handleChange}/>
+                                        <input type="radio" name="categoryId" id={elem.name} checked={formData.categoryId === elem.id} value={elem.id} disabled/>
                                         <label htmlFor={elem.name}>{elem.name}</label>
                                     </div>
 
@@ -139,7 +128,7 @@ function EditForm() {
                                 return (
 
                                     <div className="radio" key={elem + i}>
-                                        <input type="radio" name="categoryId" id={elem.name} checked={categoryId === elem.id} value={elem.id} onChange={handleChange}/>
+                                        <input type="radio" name="categoryId" id={elem.name} checked={formData.categoryId === elem.id} value={elem.id} disabled/>
                                         <label htmlFor={elem.name}>{elem.name}</label>
                                     </div>
 
@@ -147,7 +136,7 @@ function EditForm() {
                             })
                         }
                     </div>
-                    <button type="submit" className="button" onClick={send}>Add</button>
+                    <button type="submit" className="button" onClick={send}>Edit</button>
                 </form>
             </section>
         </main>
